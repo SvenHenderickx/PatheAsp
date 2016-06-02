@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -13,7 +14,14 @@ namespace PatheAsp.Models
         public string Achternaam { get; set; }
         public DateTime GeboorteDatum { get; set; }
         public EnumGeslacht Geslacht { get; set; }
+        [Required]
+        [EmailAddress]
+        [Display(Name = "Email")]
         public string Emailadres { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string Wachtwoord { get; set; }
         public bool KrijgtNieuwsBrief { get; set; }
 
